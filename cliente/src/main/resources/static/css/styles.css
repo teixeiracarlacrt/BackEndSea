@@ -1,0 +1,132 @@
+/* styles.css */
+
+/* Estilo geral do corpo */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Estilo dos cabeçalhos */
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Estilo dos formulários */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff; /* Corrigido para branco */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo das tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+/* Estilo dos links de ação */
+a.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff; /* Garantir que o texto seja branco */
+    border-radius: 4px;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo do botão de voltar */
+a[href] {
+    display: inline-block;
+    margin: 20px;
+    text-decoration: none;
+    color: #f1f8ff;
+}
+
+a[href]:hover {
+    text-decoration: underline;
+}
+/* Estilo dos botões */
+a.button,
+button.button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    text-decoration: none;
+    background-color: #007bff;
+    color: #fff; /* Texto branco */
+    border: none; /* Remove bordas dos botões */
+    border-radius: 4px;
+    text-align: center; /* Centraliza o texto */
+    cursor: pointer; /* Adiciona cursor de ponteiro */
+    font-size: 16px; /* Ajusta o tamanho da fonte */
+}
+
+a.button:hover,
+button.button:hover {
+    background-color: #0056b3; /* Cor ao passar o mouse */
+}
+
+a.button:active,
+button.button:active {
+    background-color: #004080; /* Cor ao clicar */
+}

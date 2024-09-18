@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+    <script src="https://cdn.jsdelivr.net/npm/inputmask@5.0.8/dist/inputmask.min.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Aplica a máscara para CPF
+        var cpfMask = new Inputmask('999.999.999-99');
+        cpfMask.mask(document.querySelectorAll('.cpf'));
+
+        // Aplica a máscara para Telefone
+        var telefoneMask = new Inputmask('(99) 99999-9999');
+        telefoneMask.mask(document.querySelectorAll('.telefone'));
+
+        // Aplica a máscara para CEP
+        var cepMask = new Inputmask('99999-999');
+        cepMask.mask(document.querySelectorAll('.cep'));
+    });
+    </script>
+</head>
+<body>
+<h1>Lista de Clientes</h1>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>CEP</th>
+        <th>Logradouro</th>
+        <th>Bairro</th>
+        <th>Cidade</th>
+        <th>UF</th>
+        <th>Complemento</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientes}">
+        <td th:text="${cliente.nome}">Nome</td>
+        <td th:text="${cliente.cpf}" class="cpf">CPF</td>
+        <td th:text="${cliente.cep}" class="cep">CEP</td>
+        <td th:text="${cliente.logradouro}">Logradouro</td>
+        <td th:text="${cliente.bairro}">Bairro</td>
+        <td th:text="${cliente.cidade}">Cidade</td>
+        <td th:text="${cliente.uf}">UF</td>
+        <td th:text="${cliente.complemento}">Complemento</td>
+        <td th:text="${cliente.email}">Email</td>
+        <td th:text="${cliente.telefone}" class="telefone">Telefone</td>
+        <td>
+            <!-- Botão para editar cliente -->
+
+            <a th:href="@{/clientes/{id}/editar(id=${cliente.id})}" class="button">Editar</a>
+
+            <form th:action="@{/clientes/{id}/deletar(id=${cliente.id})}" method="post" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja deletar este cliente?');">
+                <input type="hidden" name="_method" value="delete" />
+                <button type="submit">Deletar</button>
+            </form>
+
+
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/clientes/novo" class="button">Adicionar Novo Cliente</a>
+
+</body>
+</html>
