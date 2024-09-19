@@ -1,5 +1,6 @@
 package com.sea.cliente.services;
 
+import com.sea.cliente.CustomAuthenticationSuccessHandler;
 import lombok.var;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -22,7 +24,7 @@ public class SecurityConfig {
                 .antMatchers("/clientes/**").authenticated()
                 .and()
                 .formLogin()
-                .defaultSuccessUrl("/clientes", true)
+                .successHandler(customAuthenticationSuccessHandler()) // Define o handler para redirecionamento
                 .and()
                 .logout()
                 .permitAll()
@@ -31,6 +33,10 @@ public class SecurityConfig {
         return http.build();
     }
 
+    @Bean
+    public AuthenticationSuccessHandler customAuthenticationSuccessHandler() {
+        return new CustomAuthenticationSuccessHandler ();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {

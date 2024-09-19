@@ -28,9 +28,19 @@ public class ClienteController {
     private ViaCepService viaCepService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ModelAndView listClientes() {
         List<Cliente> clientes = clienteService.findAll();
         ModelAndView mav = new ModelAndView("listaClientes");
+        mav.addObject("clientes", clientes);
+        return mav;
+    }
+
+    @GetMapping("/user")
+    @PreAuthorize("hasRole('USER')")
+    public ModelAndView listaClientes() {
+        List<Cliente> clientes = clienteService.findAll();
+        ModelAndView mav = new ModelAndView("listaClientesUser");
         mav.addObject("clientes", clientes);
         return mav;
     }
